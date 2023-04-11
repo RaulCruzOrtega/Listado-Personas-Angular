@@ -7,6 +7,6 @@ import { Persona } from '../persona.model';
   styleUrls: ['./persona.component.css']
 })
 export class PersonaComponent {
-  @Input() persona: Persona;
-  @Input() indice: number;
+  @Input() persona!: Persona;
+  @Input() indice!: number;
 }
