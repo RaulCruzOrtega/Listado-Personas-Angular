@@ -3,7 +3,7 @@
     <div class="col">
       <div>
         <p>
-          {{indice + " Nombre: " + persona.nombre + " Apellido: " + persona.apellido + " Dinero: " }} {{ persona.dinero | currency: "EUR"}}
+          {{indice + " Nombre: " + persona.nombre + " Apellido: " + persona.apellido + " Dinero: " }} {{ persona.dinero | currency: "EUR"}} {{"Sexo: " + persona.sexo}}
           <input 
           type="checkbox"
           (click)="emitirSaludo()">
