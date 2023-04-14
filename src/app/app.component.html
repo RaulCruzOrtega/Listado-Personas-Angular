@@ -1,16 +1,8 @@
 <div class="container">
   <div class="col">
     <h3>{{ titulo }}</h3>
+    <hr />
   </div>
-  <hr />
-  <app-formulario></app-formulario>
-  <!--(personaCreada)="personaAgregada($event)" Iba dentro de app-formulario para escuchar el evento-->
-  <hr />
 </div>
 
-<app-persona
-  *ngFor="let personaElemento of personas; let i = index"
-  [persona]="personaElemento"
-  [indice]="i"
->
-</app-persona>
+<router-outlet></router-outlet>
