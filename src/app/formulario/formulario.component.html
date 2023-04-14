@@ -1,24 +1,32 @@
 <form class="row">
-  <div class="col-md-2">
-    <!--<label for="nombre">Nombre</label>-->
+  <div class="col-md-3">
     <input
       type="text"
       name="nombre"
       id="nombre"
       placeholder="Nombre"
       class="form-control"
-      #nombreRef
+      [(ngModel)]="nombreInput"
     />
   </div>
-  <div class="col-md-2">
-    <!--<label for="apellido">Apellido</label>-->
+  <div class="col-md-3">
     <input
       type="text"
       name="apellido"
       id="apellido"
       placeholder="Apellido"
       class="form-control"
-      #apellidoRef
+      [(ngModel)]="apellidoInput"
+    />
+  </div>
+  <div class="col-md-3">
+    <input
+      type="number"
+      name="dinero"
+      id="dinero"
+      placeholder="Dinero"
+      class="form-control"
+      [(ngModel)]="dineroInput"
     />
   </div>
   <div class="col">

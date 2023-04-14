@@ -3,13 +3,10 @@
     <div class="col">
       <div>
         <p>
-          {{indice + " Nombre: " + persona.nombre + " Apellido: " + persona.apellido}}
-          <button 
-          type="submit"
-          class="btn btn-primary"
+          {{indice + " Nombre: " + persona.nombre + " Apellido: " + persona.apellido + " Dinero: " }} {{ persona.dinero | currency: "EUR"}}
+          <input 
+          type="checkbox"
           (click)="emitirSaludo()">
-          Editar
-          </button>
         </p>
       </div>
     </div>

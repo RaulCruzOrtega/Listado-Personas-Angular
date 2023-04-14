@@ -11,10 +11,11 @@ import { PersonasService } from '../personas.service';
 export class FormularioComponent {
   //@Output() personaCreada = new EventEmitter<Persona>();
 
-  //nombreInput = "";
-  //apellidoInput = "";
-  @ViewChild('nombreRef') nombreInput!: ElementRef;
-  @ViewChild('apellidoRef') apellidoInput!: ElementRef;
+  nombreInput = "";
+  apellidoInput = "";
+  dineroInput!: number;
+  //@ViewChild('nombreRef') nombreInput!: ElementRef;
+  //@ViewChild('apellidoRef') apellidoInput!: ElementRef;
 
   constructor(private loggingService:LoggingServise, private personasService: PersonasService){
     this.personasService.saludar.subscribe(
@@ -25,12 +26,19 @@ export class FormularioComponent {
   
 
   agregarPersona(){
+    if (this.dineroInput == undefined){
+      this.dineroInput = 0;
+    }
     let persona = new Persona(
-      this.nombreInput.nativeElement.value, 
-      this.apellidoInput.nativeElement.value);
+      this.nombreInput, 
+      this.apellidoInput,
+      this.dineroInput);
     this.loggingService.enviarMensajeConsola("Enviamos persona: " + persona.nombre)
     //this.personas.push(persona);
     //this.personaCreada.emit(persona);
     this.personasService.Agregarpersona(persona);
+    this.nombreInput = "";
+    this.apellidoInput = "";
+    this.dineroInput = 0;
   }
 }
