@@ -16,7 +16,11 @@ export class FormularioComponent {
   @ViewChild('nombreRef') nombreInput!: ElementRef;
   @ViewChild('apellidoRef') apellidoInput!: ElementRef;
 
-  constructor(private loggingService:LoggingServise, private personasService: PersonasService){}
+  constructor(private loggingService:LoggingServise, private personasService: PersonasService){
+    this.personasService.saludar.subscribe(
+      (indice: number) => alert("El indice es: " + indice)
+    )
+  }
 
   
 

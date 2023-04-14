@@ -4,6 +4,12 @@
       <div>
         <p>
           {{indice + " Nombre: " + persona.nombre + " Apellido: " + persona.apellido}}
+          <button 
+          type="submit"
+          class="btn btn-primary"
+          (click)="emitirSaludo()">
+          Editar
+          </button>
         </p>
       </div>
     </div>
