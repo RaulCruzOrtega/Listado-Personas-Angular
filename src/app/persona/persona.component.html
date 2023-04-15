@@ -3,7 +3,9 @@
     <div class="col">
       <ul>
         <li>
-          <a [routerLink]="['/personas',indice]">
+          <a [routerLink]="['/personas',indice]"
+          [queryParams]="{modoEdicion:'1'}"
+          >
           {{
             indice +
               " Nombre: " +

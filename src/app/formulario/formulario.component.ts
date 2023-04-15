@@ -17,6 +17,7 @@ export class FormularioComponent {
   dineroInput!: number;
   sexo:string = "Hombre";
   index!: number;
+  modoEdicion!:number;
   //@ViewChild('nombreRef') nombreInput!: ElementRef;
   //@ViewChild('apellidoRef') apellidoInput!: ElementRef;
 
@@ -31,7 +32,8 @@ export class FormularioComponent {
 
   ngOnInit(){
     this.index = this.route.snapshot.params["id"];
-    if(this.index){
+    this.modoEdicion=parseInt(this.route.snapshot.params["modoEdicion"]);
+    if(this.modoEdicion != null && this.modoEdicion == 1){
       let persona = this.personasService.encontrarPersona(this.index);
       this.nombreInput = persona.nombre;
       this.apellidoInput = persona.apellido;
@@ -51,7 +53,7 @@ export class FormularioComponent {
     this.loggingService.enviarMensajeConsola("Enviamos persona: " + persona.nombre)
     //this.personas.push(persona);
     //this.personaCreada.emit(persona);
-    if(this.index){
+    if(this.modoEdicion != null && this.modoEdicion == 1){
       this.personasService.modificarPersona(this.index, persona)
     } else {
       this.personasService.Agregarpersona(persona);
