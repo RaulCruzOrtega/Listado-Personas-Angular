@@ -41,8 +41,15 @@
           required
         />
       </div>
-      <div class="col">
+      <div class="col-md-1">
         <button type="submit" class="btn btn-primary">+</button>
+      </div>
+      <div class="col-md-1">
+        <button *ngIf="index != null" 
+        type="submit" 
+        class="btn btn-primary"
+        (click)="eliminarPersona()"
+        >-</button>
       </div>
     </form>
     <hr />

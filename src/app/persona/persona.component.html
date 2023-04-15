@@ -1,14 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div>
-        <p>
-          {{indice + " Nombre: " + persona.nombre + " Apellido: " + persona.apellido + " Dinero: " }} {{ persona.dinero | currency: "EUR"}} {{"Sexo: " + persona.sexo}}
-          <input 
-          type="checkbox"
-          (click)="emitirSaludo()">
-        </p>
-      </div>
+      <ul>
+        <li>
+          <a [routerLink]="['/personas',indice]">
+          {{
+            indice +
+              " Nombre: " +
+              persona.nombre +
+              " Apellido: " +
+              persona.apellido +
+              " Dinero: "
+          }}
+          {{ persona.dinero | currency : "EUR" }} {{ "Sexo: " + persona.sexo }}
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

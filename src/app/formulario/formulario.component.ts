@@ -1,8 +1,8 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild, OnInit } from '@angular/core';
 import { Persona } from '../persona.model';
 import { LoggingServise } from '../LoggingService.servise';
 import { PersonasService } from '../personas.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -16,18 +16,28 @@ export class FormularioComponent {
   apellidoInput = "";
   dineroInput!: number;
   sexo:string = "Hombre";
+  index!: number;
   //@ViewChild('nombreRef') nombreInput!: ElementRef;
   //@ViewChild('apellidoRef') apellidoInput!: ElementRef;
 
   constructor(private loggingService:LoggingServise, 
     private personasService: PersonasService,
-    private routeService: Router){
+    private routeService: Router,
+    private route: ActivatedRoute){
     this.personasService.saludar.subscribe(
       (indice: number) => alert("El indice es: " + indice)
     )
   }
 
-  
+  ngOnInit(){
+    this.index = this.route.snapshot.params["id"];
+    if(this.index){
+      let persona = this.personasService.encontrarPersona(this.index);
+      this.nombreInput = persona.nombre;
+      this.apellidoInput = persona.apellido;
+      this.dineroInput = persona.dinero
+    }
+  }
 
   agregarPersona(){
     if (this.dineroInput == undefined){
@@ -41,10 +51,22 @@ export class FormularioComponent {
     this.loggingService.enviarMensajeConsola("Enviamos persona: " + persona.nombre)
     //this.personas.push(persona);
     //this.personaCreada.emit(persona);
-    this.personasService.Agregarpersona(persona);
+    if(this.index){
+      this.personasService.modificarPersona(this.index, persona)
+    } else {
+      this.personasService.Agregarpersona(persona);
+    }
     this.nombreInput = "";
     this.apellidoInput = "";
     this.dineroInput = 0;
+
+    this.routeService.navigate(["personas"]);
+  }
+
+  eliminarPersona(){
+    if(this.index != null){
+      this.personasService.eliminarPersona(this.index);
+    }
     this.routeService.navigate(["personas"]);
   }
 
