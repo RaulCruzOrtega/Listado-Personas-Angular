@@ -1,47 +1,50 @@
-<form class="row" (submit)="f.form.valid && agregarPersona()" #f="ngForm">
-  <div class="col-md-2">
-    <select class="form-control" (change)="sexoseleccionado($event)">
-      <option value="Hombre" selected>Hombre</option>
-      <option value="Mujer">Mujer</option>
-      <option value="Binari">Binari</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <input
-      type="text"
-      name="nombre"
-      id="nombre"
-      placeholder="Nombre"
-      class="form-control"
-      [(ngModel)]="nombreInput"
-      required
-    />
-  </div>
-  <div class="col-md-2">
-    <input
-      type="text"
-      name="apellido"
-      id="apellido"
-      placeholder="Apellido"
-      class="form-control"
-      [(ngModel)]="apellidoInput"
-      required
-    />
-  </div>
-  <div class="col-md-2">
-    <input
-      type="number"
-      name="dinero"
-      id="dinero"
-      placeholder="Dinero"
-      class="form-control"
-      [(ngModel)]="dineroInput"
-      required
-    />
-  </div>
+<div class="container">
   <div class="col">
-    <button type="submit" class="btn btn-primary">
-      +
-    </button>
+    <form class="row" (submit)="f.form.valid && agregarPersona()" #f="ngForm">
+      <div class="col-md-2">
+        <select class="form-control" (change)="sexoseleccionado($event)">
+          <option value="Hombre" selected>Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Binari">Binari</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <input
+          type="text"
+          name="nombre"
+          id="nombre"
+          placeholder="Nombre"
+          class="form-control"
+          [(ngModel)]="nombreInput"
+          required
+        />
+      </div>
+      <div class="col-md-2">
+        <input
+          type="text"
+          name="apellido"
+          id="apellido"
+          placeholder="Apellido"
+          class="form-control"
+          [(ngModel)]="apellidoInput"
+          required
+        />
+      </div>
+      <div class="col-md-2">
+        <input
+          type="number"
+          name="dinero"
+          id="dinero"
+          placeholder="Dinero"
+          class="form-control"
+          [(ngModel)]="dineroInput"
+          required
+        />
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary">+</button>
+      </div>
+    </form>
+    <hr />
   </div>
-</form>
+</div>

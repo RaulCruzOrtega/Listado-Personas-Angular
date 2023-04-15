@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular
 import { Persona } from '../persona.model';
 import { LoggingServise } from '../LoggingService.servise';
 import { PersonasService } from '../personas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -18,7 +19,9 @@ export class FormularioComponent {
   //@ViewChild('nombreRef') nombreInput!: ElementRef;
   //@ViewChild('apellidoRef') apellidoInput!: ElementRef;
 
-  constructor(private loggingService:LoggingServise, private personasService: PersonasService){
+  constructor(private loggingService:LoggingServise, 
+    private personasService: PersonasService,
+    private routeService: Router){
     this.personasService.saludar.subscribe(
       (indice: number) => alert("El indice es: " + indice)
     )
@@ -42,6 +45,7 @@ export class FormularioComponent {
     this.nombreInput = "";
     this.apellidoInput = "";
     this.dineroInput = 0;
+    this.routeService.navigate(["personas"]);
   }
 
   sexoseleccionado(evento: Event){

@@ -1,14 +1,15 @@
-<div class="container">
-    <div class="col">
-      <app-formulario></app-formulario>
-      <!--(personaCreada)="personaAgregada($event)" Iba dentro de app-formulario para escuchar el evento-->
-      <hr />
-    </div>
-  </div>
-  
-  <app-persona
-    *ngFor="let personaElemento of personas; let i = index"
-    [persona]="personaElemento"
-    [indice]="i"
-  >
-  </app-persona>
+<!--<app-formulario></app-formulario>
+(personaCreada)="personaAgregada($event)" Iba dentro de app-formulario para escuchar el evento-->
+
+<div style="text-align: center">
+  <button class="btn btn-primary" style="cursor: pointer" (click)="agregar()">
+    +
+  </button>
+</div>
+
+<app-persona
+  *ngFor="let personaElemento of personas; let i = index"
+  [persona]="personaElemento"
+  [indice]="i"
+>
+</app-persona>
